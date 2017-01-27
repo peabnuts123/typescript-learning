@@ -1,0 +1,20 @@
+{
+  "name": "typescript-learning",
+  "version": "0.1.0",
+  "description": "Learning how to Typescript",
+  "main": "index.js",
+  "author": "peabnuts123 <peabnuts123@gmail.com>",
+  "license": "GPLv3",
+  "scripts": {
+    "postinstall": "yarn run build",
+    "build": "tsc && babel build -d dist && rimraf build",
+    "test": "yarn run build && node dist/index.js"
+  },
+  "dependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.22.0",
+    "rimraf": "^2.5.4",
+    "typescript": "^2.1.5",
+    "yarn": "^0.19.1"
+  }
+}

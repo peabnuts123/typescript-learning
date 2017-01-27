@@ -1,0 +1,14 @@
+/* 
+    `tsconfig.json` specifies configuration options for
+    the typescript compiler when compiling this "project".
+    It also means you can invoke the compiler with less CLI arguments
+*/
+{
+    "compilerOptions": {
+        "target": "es6",
+        "outDir": "build"
+    },
+    "include": [
+        "src/*.ts"
+    ]
+}
