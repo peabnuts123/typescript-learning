@@ -152,16 +152,23 @@ export const es6 : Module = new Module("es6", function es6() {
     myPromise.then(function onResolve(message) {
         // The parameter `message` is whatever value was passed
         //  into `resolve()`. It is directly passed through.
-        console.log("Promise was resolved. Message: \"" + message + "\"");
+
+        // NOTE - TRICKY BEHAVIOUR
+        //  A Promise may resolve at any time (even synchronously)
+        //  but its callbacks are guaranteed to fire asynchronously.
+        //  This is to standardise behaviour async / sync code.
+        // THIS MEANS that this callback will actually happen AT THE END
+        //  of all of our synchronous processing. You will see this in the output.
+        console.log("PROMISE: Resolve callback firing. Message: \"" + message + "\"");
     }, function onReject(message) {
         // As per the first function, `message` is whatever value was
         //  passed into `reject()`.
-        console.log("Promise was REJECTED. Message: \"" + message + "\"");
+        console.log("PROMISE: Promise was REJECTED. Message: \"" + message + "\"");
     });
 
     // Subscribing a callback to JUST the rejection state
     myPromise.catch(function onReject(message) {
-        console.log("Second callback function for 'Rejection' outcome");
+        console.log("PROMISE: Second callback function for 'Rejection' outcome");
     });
 
     // There is even more complexity to Promises, which I shall not cover here.
@@ -170,5 +177,37 @@ export const es6 : Module = new Module("es6", function es6() {
     //  from your .then() resolve callback). You should definitely
     //  read up more about Promises if you plan to use them!
 
+
+    // CLASSES
+    console.log(" - CLASSES");
+
+    // Previously in JS you could write prototypical inheritance by hand
+    //  using functions and `.prototype` but it was confusing and required
+    //  a lot of work.
+    // ES6 introduces classes natively in JS allowing you to greatly reduce
+    //  the effort required to write an object
+
+    class MyClass {
+        greet(name) {
+            // Use of backticks also allows you to use new ES6 feature
+            //  "String Templating". ${} is an escape sequence that
+            //  evaluates out before returning the string value
+            console.log(`Hello, ${name}!`);
+        }
+
+        add(a, b) {
+            return a+b;
+        }
+    }
+
+    // Instantiation simply done through the `new` keyword
+    let myInstance = new MyClass();
+
+    // Demonstation of methods
+    console.log("MyClass.greet(\"Harvey\")");
+    myInstance.greet("Harvey");
+    console.log("MyClass.add(10, 20): " + myInstance.add(10, 20));
+
+    // We will cover more on classes in the `objects` module
 
 });
