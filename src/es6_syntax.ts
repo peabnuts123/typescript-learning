@@ -1,4 +1,4 @@
-import Module from "./lib/Module";
+import { Module } from "./lib/Module";
 
 export const es6 : Module = new Module("es6", function es6() {
     // Typescript can transpile ES6 syntax (with a little help from Babel)
@@ -136,7 +136,7 @@ export const es6 : Module = new Module("es6", function es6() {
             // This is how we will inform other code down the line if
             //  our async call went well or not.
             if (result === "success") {
-                resolve(message)
+                resolve(message);
             } else {
                 reject(message);
             }
