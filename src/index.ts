@@ -1,17 +1,10 @@
-import { es6 } from "./es6_syntax";
+import Module from "./lib/Module";
 
-// Definition for Module object
-interface Module {
-    name: string,
-    moduleFunc: Function
-}
+import { es6 } from "./es6_syntax";
 
 // Manifest of all modules in this test project;
 let modules : Module[] = [
-    {
-        name: "es6",
-        moduleFunc: es6
-    }
+    es6
 ];
 
 // Execute the function of each module

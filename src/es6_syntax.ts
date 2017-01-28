@@ -1,4 +1,6 @@
-export function es6() {
+import Module from "./lib/Module";
+
+export const es6 : Module = new Module("es6", function es6() {
     // Typescript can transpile ES6 syntax (with a little help from Babel)
 
 
@@ -9,7 +11,7 @@ export function es6() {
     let x = 2;
 
     // {} without context creates a block (even in normal JS)
-    //  but `var` is not scoped to this block. However, `let` is. 
+    //  but `var` is not scoped to this block. However, `let` is.
     {
         // This variable has the scope of the containing block
         let x = 3;
@@ -19,16 +21,16 @@ export function es6() {
     console.log("Module scope `x`: " + x);      // 2
 
 
-    // ARROW FUNCTIONS 
+    // ARROW FUNCTIONS
     console.log(" - ARROW FUNCTIONS");
 
-    // Arrow functions are condensed forms of functions that 
+    // Arrow functions are condensed forms of functions that
     //  take in parameters and return something
     let add = (a,b) => a+b;
     console.log("Arrow function add(10,20): " + add(10,20));    // 30
 
 
-    // GENERATORS 
+    // GENERATORS
     console.log(" - GENERATORS");
 
     // Generator function for fibonacci sequence
@@ -79,14 +81,14 @@ export function es6() {
     console.log("+13: " + adder.next(13).value);      // 28
     console.log("+20: " + adder.next(20).value);      // 48
 
-    
+
     // PROMISES
     console.log(" - PROMISES");
 
-    // Promises are a contract between different parts of code. 
+    // Promises are a contract between different parts of code.
     //  They are incredibly powerful and as such can be rather complex.
-    //  They are USUALLY used for managing asynchronous code.  
-    //  In the most basic form a promise is a function that is executed that specifies 
+    //  They are USUALLY used for managing asynchronous code.
+    //  In the most basic form a promise is a function that is executed that specifies
     //  whether it worked ("resolved") or failed for some reason ("rejected").
     //  Other parts of your code then "subscribe" to execute based on whether
     //  the promise was resolved or rejected.
@@ -117,14 +119,14 @@ export function es6() {
     // Promise is constructed with a single function parameter.
     console.log("Creating promise for requesting data from server")
     let myPromise = new Promise(function(resolve, reject) {
-        //  The signature of this function is specific, it takes a 
+        //  The signature of this function is specific, it takes a
         //  `resolve` object (which is a function) and a `reject` object
         //  (which is also a function).
         // These two functions are used to mark this Promise object as
         //  resolved or rejected.
         // THE MOST IMPORTANT THING to understand about Promises is
         //  that they are themselves NOT ASYNC and this function is
-        //  executed EVEN BEFORE `myPromise` is assigned the value 
+        //  executed EVEN BEFORE `myPromise` is assigned the value
         //  returned from `new Promise()`
 
         // Call our async task.
@@ -153,7 +155,7 @@ export function es6() {
         console.log("Promise was resolved. Message: \"" + message + "\"");
     }, function onReject(message) {
         // As per the first function, `message` is whatever value was
-        //  passed into `reject()`. 
+        //  passed into `reject()`.
         console.log("Promise was REJECTED. Message: \"" + message + "\"");
     });
 
@@ -162,11 +164,11 @@ export function es6() {
         console.log("Second callback function for 'Rejection' outcome");
     });
 
-    // There is even more complexity to Promises, which I shall not cover here. 
+    // There is even more complexity to Promises, which I shall not cover here.
     //  The biggest thing omitted here is that errors in your code will trigger
     //  a rejection state, and this can happen in strange ways (such as
     //  from your .then() resolve callback). You should definitely
     //  read up more about Promises if you plan to use them!
 
 
-};
+});
