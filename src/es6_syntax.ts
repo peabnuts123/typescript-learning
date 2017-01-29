@@ -153,10 +153,10 @@ export const es6 : Module = new Module("es6", function es6() {
         // The parameter `message` is whatever value was passed
         //  into `resolve()`. It is directly passed through.
 
-        // NOTE - TRICKY BEHAVIOUR
+        // NOTE - TRICKY BEHAVIOR
         //  A Promise may resolve at any time (even synchronously)
         //  but its callbacks are guaranteed to fire asynchronously.
-        //  This is to standardise behaviour async / sync code.
+        //  This is to standardize behavior async / sync code.
         // THIS MEANS that this callback will actually happen AT THE END
         //  of all of our synchronous processing. You will see this in the output.
         console.log("PROMISE: Resolve callback firing. Message: \"" + message + "\"");
@@ -203,11 +203,15 @@ export const es6 : Module = new Module("es6", function es6() {
     // Instantiation simply done through the `new` keyword
     let myInstance = new MyClass();
 
-    // Demonstation of methods
+    // Demonstration of methods
     console.log("MyClass.greet(\"Harvey\")");
     myInstance.greet("Harvey");
     console.log("MyClass.add(10, 20): " + myInstance.add(10, 20));
 
     // We will cover more on classes in the `objects` module
 
+
+    /* TODO
+        - Import / Export
+    */
 });
